@@ -10,10 +10,11 @@ import java.util.ArrayList;
 public class CustomerServiceLocal implements CustomerService{
     private final List<Customer> customers = new ArrayList<>();
 
-    public CustomerServiceLocal(){
-        createCustomer("Steven", "Tyler");
-        createCustomer("Steven", "Johnson");
-    }
+    // public CustomerServiceLocal(){
+    //     createCustomer("Steven", "Tyler", 32, "steventyler@gmail.com");
+    //     createCustomer("Steven", "Johnson", 58, "bigjohn@outlook.com");
+
+    // }
 
     public List<Customer> getAllCustomers(){
         return customers;
@@ -23,8 +24,7 @@ public class CustomerServiceLocal implements CustomerService{
         return customers.get(id);
     }
 
-    public void createCustomer(String firstName, String lastName){
-        int id = customers.size();
-        customers.add(new Customer(id, firstName, lastName));
+    public void createCustomer(Customer customer){
+        customers.add(customer);
     }
 }
