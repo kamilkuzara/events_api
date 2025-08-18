@@ -26,8 +26,8 @@ public class CustomerController {
         return customerService.getCustomer(id);
     }
 
-//    @PostMapping
-//    public void createCustomer(@RequestBody String firstName, @RequestBody String lastName){
-//        customerService.createCustomer(firstName, lastName);
-//    }
+   @PostMapping
+   public void createCustomer(@RequestBody Customer customer){
+       customerService.createCustomer(customer);
+   }
 }
