@@ -1,9 +1,20 @@
 package com.neueda.events_api.entity;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
+@Entity
 public class Ticket {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     String ticket_id ;
     String event_id ;
     double price ;
+
+    public Ticket() {
+
+    }
 
     public String getTicket_id() {
         return ticket_id;
