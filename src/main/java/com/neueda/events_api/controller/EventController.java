@@ -2,7 +2,6 @@ package com.neueda.events_api.controller;
 
 import com.neueda.events_api.entity.Event;
 import com.neueda.events_api.service.EventService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,8 +9,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/events")
 public class EventController {
-    @Autowired
-    private EventService eventService;
+    private final EventService eventService;
+
+    public EventController(EventService eventService){
+      this.eventService = eventService;
+    }
 
     @GetMapping
     public List<Event> getAllEvents() {
