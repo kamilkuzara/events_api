@@ -6,35 +6,50 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Event {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    String id ;
-    String venue ;
-    String date;
+    private int id;
+    private String venue ;
+    private String date;
+    private int numTicketsAvailable;
+    private String artistName;
 
-    public Event() {
-
-    }
-
-    public String getId() {
+    public int getId() {
         return id;
     }
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
+
     public String getVenue() {
         return venue;
     }
-
     public void setVenue(String venue) {}
+
     public String getDate() {
         return date;
     }
     public void setDate(String date) {}
 
-    public Event(String id, String venue, String date) {
+    public String getArtistName() {
+        return artistName;
+    }
+
+    public void setArtistName(String artistName) {
+        this.artistName = artistName;
+    }
+
+    public int getNumTicketsAvailable() {
+        return numTicketsAvailable;
+    }
+
+    public void setNumTicketsAvailable(int numTicketsAvailable) {
+        this.numTicketsAvailable = numTicketsAvailable;
+    }
+
+    public Event(int id, String venue, String date, int numTicketsAvailable, String artistName) {
         this.id = id;
         this.venue = venue;
         this.date = date;
+        this.numTicketsAvailable = numTicketsAvailable;
+        this.artistName = artistName;
     }
 }
