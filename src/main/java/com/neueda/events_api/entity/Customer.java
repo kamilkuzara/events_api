@@ -1,6 +1,13 @@
 package com.neueda.events_api.entity;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
+@Entity
 public class Customer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String firstName;
     private String lastName;
@@ -9,6 +16,10 @@ public class Customer {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public Customer() {
+
     }
 
     public String getFirstName() {
