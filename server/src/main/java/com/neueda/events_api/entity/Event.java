@@ -10,12 +10,14 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    private String name;
     private String venue ;
     private String date;
     private int numTicketsAvailable;
     private String artistName;
 
-    public Event(String venue, String date, int numTicketsAvailable, String artistName) {
+    public Event(String name, String venue, String date, int numTicketsAvailable, String artistName) {
+        this.name = name;
         this.venue = venue;
         this.date = date;
         this.numTicketsAvailable = numTicketsAvailable;
@@ -25,6 +27,14 @@ public class Event {
     // default constructor, needed for JPA to work
     public Event(){
 
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getId() {
@@ -37,12 +47,17 @@ public class Event {
     public String getVenue() {
         return venue;
     }
-    public void setVenue(String venue) {}
+    public void setVenue(String venue) {
+        this.venue = venue;
+    }
 
     public String getDate() {
         return date;
     }
-    public void setDate(String date) {}
+    public void setDate(String date) {
+//        TODO: Update the method so that it parses the string into a data format
+        this.date = date;
+    }
 
     public String getArtistName() {
         return artistName;

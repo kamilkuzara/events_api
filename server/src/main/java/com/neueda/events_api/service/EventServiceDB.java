@@ -29,6 +29,16 @@ public class EventServiceDB implements EventService {
     }
 
     @Override
+    public List<Event> getEventsByName(String name){
+        return eventRepository.findByNameContainingIgnoreCase(name);
+    }
+
+    @Override
+    public List<Event> getEventsByArtistName(String artistName){
+        return eventRepository.findByArtistNameContainingIgnoreCase(artistName);
+    }
+
+    @Override
     public void createEvent(Event event){
       eventRepository.save(event);
     }

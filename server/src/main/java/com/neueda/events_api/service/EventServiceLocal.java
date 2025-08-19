@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Profile;
 
 import java.util.*;
 
+import static java.util.stream.Collectors.toList;
+
 @Service
 @Profile("local")
 public class EventServiceLocal implements EventService{
@@ -22,11 +24,15 @@ public class EventServiceLocal implements EventService{
     public Event getEventById(Integer id) {
         Optional<Event> e =  events.stream().filter(event -> event.getId().equals(id)).findFirst();
 
-        if(e.isPresent()){
-            return e.get();
-        }
+        return e.orElse(null);
+    }
 
-        return null;
+    public List<Event> getEventsByName(String name){
+        return events.stream().filter(event -> event.getName().toLowerCase().contains(name.toLowerCase())).collect(toList());
+    }
+
+    public List<Event> getEventsByArtistName(String artistName){
+        return events.stream().filter(event -> event.getArtistName().toLowerCase().contains(artistName.toLowerCase())).collect(toList());
     }
 
     public void createEvent(Event event){
