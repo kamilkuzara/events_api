@@ -25,8 +25,20 @@ public class EventController {
         return eventService.getEventById(id);
     }
 
+    @GetMapping(params = "name")
+    public List<Event> getEventsByName(@RequestParam String name) {
+        return eventService.getEventsByName(name);
+    }
+
+    @GetMapping(params = "artist")
+    public List<Event> getEventsByArtistName(@RequestParam String artist) {
+        return eventService.getEventsByArtistName(artist);
+    }
+
     @PostMapping
     public void createEvent(@RequestBody Event newEvent) {
         eventService.createEvent(newEvent);
     }
+
+
 }
