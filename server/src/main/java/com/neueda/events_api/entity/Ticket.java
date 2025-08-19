@@ -1,35 +1,40 @@
 package com.neueda.events_api.entity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    String ticket_id ;
-    String event_id ;
-    double price ;
+    private Integer id ;
+    private double price ;
+    private String seatType;
+
+    @ManyToOne
+    @JoinColumn(name = "event", nullable = false)
+    private Event event;
+
+    @ManyToOne
+    @JoinColumn(name = "ticketHolder", nullable = false)
+    private Customer ticketHolder;
+
+    public Ticket(Integer id, double price, String seatType, Event event,  Customer ticketHolder) {
+        this.id = id;
+        this.price = price;
+        this.seatType = seatType;
+        this.event = event;
+        this.ticketHolder = ticketHolder;
+    }
 
     public Ticket() {
 
     }
 
-    public String getTicket_id() {
-        return ticket_id;
+    public Integer getId() {
+        return id;
     }
 
-    public void setTicket_id(String ticket_id) {
-        this.ticket_id = ticket_id;
-    }
-
-    public String getEvent_id() {
-        return event_id;
-    }
-
-    public void setEvent_id(String event_id) {
-        this.event_id = event_id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public double getPrice() {
@@ -40,7 +45,27 @@ public class Ticket {
         this.price = price;
     }
 
-    public Ticket(String ticket_id, String event_id, double price) {
-        this.ticket_id = ticket_id;
+    public String getSeatType() {
+        return seatType;
+    }
+
+    public void setSeatType(String seatType) {
+        this.seatType = seatType;
+    }
+
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
+    }
+
+    public Customer getTicketHolder() {
+        return ticketHolder;
+    }
+
+    public void setTicketHolder(Customer ticketHolder) {
+        this.ticketHolder = ticketHolder;
     }
 }
