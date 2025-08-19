@@ -27,4 +27,8 @@ public class CustomerServiceDB implements CustomerService{
     public void createCustomer(Customer customer){
         customerRepository.save(customer);
     }
+
+    public void deleteCustomer(Integer id){
+        customerRepository.deleteById(id);
+    }
 }
