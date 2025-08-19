@@ -28,7 +28,7 @@ public class CustomerServiceLocal implements CustomerService{
         customers.add(customer);
     }
 
-    public void deleteCustomer(int id){
-        customers.remove(id);
+    public void deleteCustomer(Integer id){
+        customers.remove(id.intValue());
     }
 }
